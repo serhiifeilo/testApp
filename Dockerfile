@@ -12,7 +12,12 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-COPY composer.json composer.lock ./
+COPY composer.json ./
+COPY composer.lock* ./
+
+RUN composer install \
+    --prefer-dist \
+    --no-interaction
 
 RUN composer install \
     --prefer-dist \

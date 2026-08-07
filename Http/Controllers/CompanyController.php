@@ -21,16 +21,16 @@ class CompanyController extends Controller
         return response()->json($result);
     }
 
-public function versions(
-    string $edrpou
-): JsonResponse
-{
-    $company = Company::query()
-        ->where('edrpou', $edrpou)
-        ->firstOrFail();
+    public function versions(
+        string $edrpou
+    ): JsonResponse
+    {
+        $company = Company::query()
+            ->where('edrpou', $edrpou)
+            ->firstOrFail();
 
-    return response()->json(
-        $company->versions
-    );
-}
+        return response()->json(
+            $company->versions
+        );
+    }
 }
